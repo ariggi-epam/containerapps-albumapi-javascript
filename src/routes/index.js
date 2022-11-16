@@ -17,6 +17,12 @@ router.get("/api/testdeploy", function (req, res, next) {
   });
 });
 
+router.get("/api/alberto", function (req, res, next) {
+  res.json({
+    message: "alberto  done",
+  });
+});
+
 
 
 module.exports = router;
