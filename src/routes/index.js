@@ -11,5 +11,12 @@ router.get("/api/", function (req, res, next) {
 
 // get albums
 router.get("/api/albums", orderController.index);
+router.get("/api/testdeploy", function (req, res, next) {
+  res.json({
+    message: "deploy done",
+  });
+});
+
+
 
 module.exports = router;
