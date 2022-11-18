@@ -9,20 +9,12 @@ const roleGroupMappings = {
     //fake group
     'editor': 'aaaaaaaa-a85c-4f7b-8574-7e09a79a084d'
 };
-exports.getroles = async function (context, req) {
+exports.getroles = async function (req, res) {
     console.log("calling get roles\n");
 
-    
-    console.log("\nlog headers \n");
-    console.log(context.headers)
+      
 
-    console.log("\nlog kheaders \n");
-    console.log(context.kheaders)
-
-    console.log("\n\nlog context \n");
-    console.log(context)
-
-    const accessToken=context.kheaders.get('x-ms-auth-token');
+    const accessToken=req.headers.get('x-ms-auth-token');
     console.log("access token "+accessToken);
     console.log(context);
     
@@ -33,7 +25,7 @@ exports.getroles = async function (context, req) {
             roles.push(role);
         }
     }
-    context.res.json({
+    res.json({
         roles
     });
 }
