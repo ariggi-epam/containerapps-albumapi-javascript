@@ -12,7 +12,7 @@ const roleGroupMappings = {
 exports.getroles = async function (context, req) {
     console.log("calling get roles");
 
-    const accessToken=req.headers('x-ms-auth-token')
+    const accessToken=req.headers['x-ms-auth-token'];
     
     console.log("access token "+accessToken);
     console.log(context);
