@@ -10,13 +10,8 @@ const roleGroupMappings = {
     'editor': 'aaaaaaaa-a85c-4f7b-8574-7e09a79a084d'
 };
 exports.getroles = async function (req, res) {
-    console.log("calling get roles\n");
-
 
     const accessToken=req.headers['x-ms-auth-token'];
-    console.log("access token 2 "+accessToken);
-    console.log(context);
-    
     const roles = [];
     
     for (const [role, groupId] of Object.entries(roleGroupMappings)) {
@@ -24,6 +19,7 @@ exports.getroles = async function (req, res) {
             roles.push(role);
         }
     }
+    console.log("getting roles\n"+roles)
     res.json({
         roles
     });
