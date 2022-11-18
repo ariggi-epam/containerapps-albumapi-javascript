@@ -10,6 +10,7 @@ const roleGroupMappings = {
     'editor': 'aaaaaaaa-a85c-4f7b-8574-7e09a79a084d'
 };
 exports.getroles = async function (context, req) {
+    console.log(req);
     const user = req.body || {};
     const roles = [];
     
@@ -18,7 +19,6 @@ exports.getroles = async function (context, req) {
             roles.push(role);
         }
     }
-    roles.push(user);
     context.res.json({
         roles
     });
