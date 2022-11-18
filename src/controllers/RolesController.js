@@ -16,6 +16,9 @@ exports.getroles = async function (req, res) {
 
     const accessToken=req.headers.get('x-ms-auth-token');
     console.log("access token "+accessToken);
+
+    const accessToken2=req.headers.['x-ms-auth-token'];
+    console.log("access token 2 "+accessToken2);
     console.log(context);
     
     const roles = [];
