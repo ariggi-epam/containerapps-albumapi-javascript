@@ -12,17 +12,15 @@ const roleGroupMappings = {
 exports.getroles = async function (context, req) {
     console.log("calling get roles");
 
-    console.log("logging req");
-    console.log(req);
-
-    console.log("logging context");
+    const accessToken=req.headers('x-ms-auth-token')
+    
+    console.log("access token "+accessToken);
     console.log(context);
     
-    const user = req.body || {};
     const roles = [];
     
     for (const [role, groupId] of Object.entries(roleGroupMappings)) {
-        if (await isUserInGroup(groupId, user.accessToken)) {
+        if (await isUserInGroup(groupId, accessToken)) {
             roles.push(role);
         }
     }
@@ -37,7 +35,7 @@ async function isUserInGroup(groupId, bearerToken) {
     const response = await fetch(url, {
         method: 'GET',
         headers: {
-            'Authorization': `Bearer ${bearerToken}`
+            'Authorization': `${bearerToken}`
         },
     });
 
