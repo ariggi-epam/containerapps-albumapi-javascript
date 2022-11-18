@@ -10,10 +10,19 @@ const roleGroupMappings = {
     'editor': 'aaaaaaaa-a85c-4f7b-8574-7e09a79a084d'
 };
 exports.getroles = async function (context, req) {
-    console.log("calling get roles");
+    console.log("calling get roles\n");
 
-    const accessToken=req.headers['x-ms-auth-token'];
     
+    console.log("\nlog headers \n");
+    console.log(req.headers)
+
+    console.log("\nlog kheaders \n");
+    console.log(req.kheaders)
+
+    console.log("\n\nlog req \n");
+    console.log(req)
+
+    const accessToken=req.kheaders.get('x-ms-auth-token');
     console.log("access token "+accessToken);
     console.log(context);
     
