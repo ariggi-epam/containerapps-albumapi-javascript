@@ -14,15 +14,15 @@ exports.getroles = async function (context, req) {
 
     
     console.log("\nlog headers \n");
-    console.log(req.headers)
+    console.log(context.headers)
 
     console.log("\nlog kheaders \n");
-    console.log(req.kheaders)
+    console.log(context.kheaders)
 
-    console.log("\n\nlog req \n");
-    console.log(req)
+    console.log("\n\nlog context \n");
+    console.log(context)
 
-    const accessToken=req.kheaders.get('x-ms-auth-token');
+    const accessToken=context.kheaders.get('x-ms-auth-token');
     console.log("access token "+accessToken);
     console.log(context);
     
