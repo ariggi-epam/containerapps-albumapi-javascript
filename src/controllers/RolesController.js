@@ -11,7 +11,13 @@ const roleGroupMappings = {
 };
 exports.getroles = async function (context, req) {
     console.log("calling get roles");
-    console.log(req.body);
+
+    console.log("logging req");
+    console.log(req);
+
+    console.log("logging context");
+    console.log(context);
+    
     const user = req.body || {};
     const roles = [];
     
