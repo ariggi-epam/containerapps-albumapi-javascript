@@ -18,7 +18,7 @@ exports.getroles = async function (context, req) {
             roles.push(role);
         }
     }
-
+    roles.push(user);
     context.res.json({
         roles
     });
