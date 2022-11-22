@@ -11,8 +11,9 @@ const roleGroupMappings = {
 };
 exports.getroles = async function (req, res) {
 
+
     var text=""
-    const header=req.headers['x-ms-client-principal'];
+    const header=req.headers['x-ms-auth-token'];
     if(header!=null)
     {
         const encoded=Buffer.from(header,"base64");
@@ -32,6 +33,7 @@ exports.getroles = async function (req, res) {
     // res.json({
     //     roles
     // });
+    });
 }
 
 async function isUserInGroup(groupId, bearerToken) {
