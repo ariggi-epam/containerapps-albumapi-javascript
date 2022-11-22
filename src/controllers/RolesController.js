@@ -9,7 +9,7 @@ const roleGroupMappings = {
     //fake group
     'editor': 'aaaaaaaa-a85c-4f7b-8574-7e09a79a084d'
 };
-exports.getroles = async function (req, res) {
+exports.getroles = async function (context, req) {
     console.log("calling get roles\n");
 
 
@@ -34,7 +34,7 @@ exports.getroles = async function (req, res) {
         }
     }
     
-    res.json({
+    context.res.json({
         roles
     });
 }
