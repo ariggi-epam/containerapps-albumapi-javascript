@@ -11,18 +11,27 @@ const roleGroupMappings = {
 };
 exports.getroles = async function (req, res) {
 
-    const accessToken=req.headers['x-ms-auth-token'];
-    const roles = [];
-    
-    for (const [role, groupId] of Object.entries(roleGroupMappings)) {
-        if (await isUserInGroup(groupId, accessToken)) {
-            roles.push(role);
-        }
+    var text=""
+    const header=req.headers['x-ms-client-principal'];
+    if(header!=null)
+    {
+        const encoded=Buffer.from(header,"base64");
+        const decoded= encoded.toString("ascii");
+        text=JSON.parse(decoded)["userDetails"];
+        console.log(decoded);
     }
-    console.log("getting roles\n"+roles)
-    res.json({
-        roles
-    });
+    
+    res.send({text:text});
+    
+    // for (const [role, groupId] of Object.entries(roleGroupMappings)) {
+    //     if (await isUserInGroup(groupId, accessToken)) {
+    //         roles.push(role);
+    //     }
+    // }
+    // console.log("getting roles\n"+roles)
+    // res.json({
+    //     roles
+    // });
 }
 
 async function isUserInGroup(groupId, bearerToken) {
