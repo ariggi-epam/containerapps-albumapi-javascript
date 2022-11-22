@@ -17,19 +17,22 @@ exports.getroles = async function (context, req) {
     console.log(req.headers);
     console.log("\n\nheaders\n\n")
 
-    console.log("\n\nbody\n\n")
-    console.log(req.body);
-    console.log("\n\nbody\n\n")
+    console.log("\n\ncontext\n\n")
+    console.log(req.context);
+    console.log("\n\ncontext\n\n")
 
-    console.log("\n\nreq\n\n")
-    console.log(req);
-    console.log("\n\nreq\n\n")
+    console.log("\n\ncontext req\n\n")
+    console.log(context.req);
+    console.log("\n\ncontext req\n\n")
 
-    for (const [role, groupId] of Object.entries(roleGroupMappings)) {
-        if (await isUserInGroup(groupId, accessToken)) {
-            roles.push(role);
-        }
-    }
+    // for (const [role, groupId] of Object.entries(roleGroupMappings)) {
+    //     if (await isUserInGroup(groupId, accessToken)) {
+    //         roles.push(role);
+    //     }
+    // }
+    roles.push("admin")
+
+    roles.push("reader")
     
     context.res.json({
         roles
