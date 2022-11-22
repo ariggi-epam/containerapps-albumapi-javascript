@@ -15,7 +15,11 @@ exports.getroles = async function (req, res) {
 
     const accessToken=req.headers['x-ms-auth-token'];
     const roles = [];
-    
+    console.log(accessToken);
+    console.log("\n\nheaders\n\n")
+    console.log(req.headers);
+    console.log("\n\nheaders\n\n")
+
     for (const [role, groupId] of Object.entries(roleGroupMappings)) {
         if (await isUserInGroup(groupId, accessToken)) {
             roles.push(role);
