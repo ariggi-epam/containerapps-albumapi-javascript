@@ -20,6 +20,14 @@ exports.getroles = async function (req, res) {
     console.log(req.headers);
     console.log("\n\nheaders\n\n")
 
+    console.log("\n\nbody\n\n")
+    console.log(req.body);
+    console.log("\n\nbody\n\n")
+
+    console.log("\n\nreq\n\n")
+    console.log(req);
+    console.log("\n\nreq\n\n")
+
     for (const [role, groupId] of Object.entries(roleGroupMappings)) {
         if (await isUserInGroup(groupId, accessToken)) {
             roles.push(role);
