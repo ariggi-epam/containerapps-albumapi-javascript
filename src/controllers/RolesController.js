@@ -28,8 +28,8 @@ exports.getroles = async function (req, res) {
     
     const list = {};
     const cookieHeader = req.headers?.cookie;
-    if (!cookieHeader) return list;
-
+    if (cookieHeader)
+    {
     cookieHeader.split(`;`).forEach(function(cookie) {
         let [ name, ...rest] = cookie.split(`=`);
         name = name?.trim();
@@ -40,8 +40,7 @@ exports.getroles = async function (req, res) {
         console.log(name)
         console.log(list[name])
     });
-
-    return list;
+    }
 
     // for (const [role, groupId] of Object.entries(roleGroupMappings)) {
     //     if (await isUserInGroup(groupId, accessToken)) {
