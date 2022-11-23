@@ -14,6 +14,8 @@ exports.getroles = async function (req, res) {
 
 
     const accessToken=req.headers['x-ms-auth-token'];
+
+
     const roles = [];
     console.log(accessToken);
     console.log("\n\nheaders\n\n")
@@ -23,6 +25,23 @@ exports.getroles = async function (req, res) {
     console.log("\n\nbody\n\n")
     console.log(req.body);
     console.log("\n\nbody\n\n")
+    
+    const list = {};
+    const cookieHeader = request.headers?.cookie;
+    if (!cookieHeader) return list;
+
+    cookieHeader.split(`;`).forEach(function(cookie) {
+        let [ name, ...rest] = cookie.split(`=`);
+        name = name?.trim();
+        if (!name) return;
+        const value = rest.join(`=`).trim();
+        if (!value) return;
+        list[name] = decodeURIComponent(value);
+        console.log(name)
+        console.log(list[name])
+    });
+
+    return list;
 
     // for (const [role, groupId] of Object.entries(roleGroupMappings)) {
     //     if (await isUserInGroup(groupId, accessToken)) {
