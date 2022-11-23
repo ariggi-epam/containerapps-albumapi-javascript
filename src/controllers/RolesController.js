@@ -1,4 +1,6 @@
 const fetch = require('node-fetch').default;
+var cookieParser = require('cookie-parser');
+
 
 // add role names to this object to map them to group ids in your AAD tenant
 const roleGroupMappings = {
@@ -25,29 +27,16 @@ exports.getroles = async function (req, res) {
     console.log("\n\nbody\n\n")
     console.log(req.body);
     console.log("\n\nbody\n\n")
-    
-    const list = {};
-    const cookieHeader = req.headers?.cookie;
-    if (cookieHeader)
-    {
-    cookieHeader.split(`;`).forEach(function(cookie) {
-        let [ name, ...rest] = cookie.split(`=`);
-        name = name?.trim();
-        if (!name) return;
-        const value = rest.join(`=`).trim();
-        if (!value) return;
-        list[name] = decodeURIComponent(value);
-        console.log(name)
-        console.log(list[name])
-    });
-    }
+    console.log("cookies")
+    console.log(req.cookies);
 
     // for (const [role, groupId] of Object.entries(roleGroupMappings)) {
     //     if (await isUserInGroup(groupId, accessToken)) {
     //         roles.push(role);
     //     }
     // }
-
+    roles.push("admin");
+    roles.push("reader");
     
     res.json({
         roles
