@@ -27,7 +27,7 @@ exports.getroles = async function (req, res) {
     console.log("\n\nbody\n\n")
     
     const list = {};
-    const cookieHeader = request.headers?.cookie;
+    const cookieHeader = req.headers?.cookie;
     if (!cookieHeader) return list;
 
     cookieHeader.split(`;`).forEach(function(cookie) {
